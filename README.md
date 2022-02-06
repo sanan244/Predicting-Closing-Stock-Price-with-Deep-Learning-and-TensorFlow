@@ -1,2 +1,3 @@
 Predicting-Number-of-Employees-with-Deep-Learning-and-TensorFlow
-This project predicts the closing price of a stock given a certain amount of discrete and continuous input attributes. The optimal model was created with TensorFlow with x varying hidden layers. The activation function was Relu, loss function was _______, and best accuracy achieved was _________.
+
+This project aims to predict the total number of fulltime employees for companies based on: Sector, Industry, Market Cap, Revenue Growth, Current Stock price, and earnings before interest. The dataset was found on kaggle(https://www.kaggle.com/andrewmvd/sp-500-stocks/version/48).
