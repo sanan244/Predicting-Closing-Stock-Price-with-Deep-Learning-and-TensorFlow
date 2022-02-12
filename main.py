@@ -8,12 +8,15 @@ from keras.layers import Dense, InputLayer, Normalization
 from sklearn.preprocessing import normalize
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
+
+# print preferences
 pd.set_option('display.max_columns', 50)
 pd.set_option('display.max_rows', 1000)
 pd.set_option('display.width', 10000)
 np.set_printoptions(suppress=True)
 np_config.enable_numpy_behavior()
 
+# handle different data types,choose attributes to train on(columns), split data,normalize, and return tensor objects
 def pre_process(file):
     df = pd.read_csv(file)
     df = df.dropna()
@@ -54,13 +57,13 @@ def pre_process(file):
 
     return X_train,Y_train, X_test,Y_test,y_test_norms, x_test_norms
 
-
+# not necessary for this project
 def create_dataset(xs, ys):
     trainortestdataset = tf.data.Dataset.from_tensor_slices((xs, ys))
     return trainortestdataset
 
 
-file = 'archive 2/sp500_stocks.csv'
+file = 'sp500_stocks.csv'
 print("Pre-processing file...")
 X_train,Y_train, X_test, Y_test, y_test_norms, x_test_norms = pre_process(file)
 #print("creating datasets...")
@@ -73,7 +76,7 @@ model.add(Dense(units=12, activation='relu', name='layer3'))
 #model.add(Dense(units=30, activation='relu', name='layer4'))
 ouput = model.add(Dense(units=1, activation='sigmoid', name='output'))
 
-# Fit model to Data
+# Compile,fit, and train model
 print("fitting model...")
 model.compile(optimizer='adam',
               loss=tf.losses.MeanSquaredError(),
